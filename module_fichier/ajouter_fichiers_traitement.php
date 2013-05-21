@@ -120,16 +120,8 @@ else
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
 	////
-	if(isset($_POST["notification"]) && control_upload()==true)
-	{
-		// On prends les droits d'accès du dernier fichier OU du fichier auquel on ajoute une version
-		$id_fichier_tmp = (@$_POST["id_fichier_version"]>0)   ?  $fichier_old["id_fichier"]  :  $fichier["id_fichier"];
-		$liste_id_destinataires = users_affectes($objet["fichier"], $id_fichier_tmp);
-		$objet_mail = $trad["FICHIER_mail_nouveau_fichier_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = $trad["FICHIER_mail_nouveau_fichier_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"]." :<br /><br />";
-		foreach($_FILES as $fichier)	{ if($fichier["name"]!="")	$contenu_mail .= $fichier["name"]."<br />"; }
-		envoi_mail($liste_id_destinataires, $objet_mail, $contenu_mail, array("notif"=>true));
-	}
+	include_once('../hack_Topaza/notification/notif_topaza_fichiers_traitement.php');
+	notif_fichier_traitement();
 }
 
 
@@ -141,3 +133,6 @@ pref_user("optimiser_taille");
 taille_stock_fichier(true);
 reload_close();
 ?>
+	<div style="text-align:right;margin-top:20px;">
+		<input type="hidden" name="id_dossier" value="<?php echo $fichier_tmp["id_dossier"]; ?>" />
+	</div>

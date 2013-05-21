@@ -84,25 +84,9 @@ if(isset($_POST["id_evenement"]))
 	ajouter_fichiers_joint($objet["evenement"],$_POST["id_evenement"]);
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
-	if(isset($_POST["notification"]) && $evt_tmp["droit_acces"]==3)
-	{
-		// Fichier .Ical (temporaire)
-		$evt_ical = objet_infos($objet["evenement"],$_POST["id_evenement"]);
-		$nom_fichier = suppr_carac_spe($evt_ical["titre"],"normale").".ics";
-		$fichier_tmp = PATH_TMP.uniqid(mt_rand()).$nom_fichier;
-		$fp = fopen($fichier_tmp, "w");
-		fwrite($fp, fichier_ical(array($evt_ical)));
-		fclose($fp);
-		$_FILES[] = array("error"=>0, "type"=>"text/Calendar", "name"=>$nom_fichier, "tmp_name"=>$fichier_tmp);
-		// Destinataires + titre + description
-		$tab_id_user_notif = (isset($_POST["notif_destinataires"]) && count($_POST["notif_destinataires"])>0)  ?  $_POST["notif_destinataires"]  :  $tab_id_user_notif;
-		$objet_mail = $trad["AGENDA_mail_nouvel_evenement_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = $_POST["titre"]." &nbsp; ".temps($date_debut,"normal",$date_fin);
-		if($_POST["description"]!="")	$contenu_mail .= "<br /><br />".$_POST["description"];
-		// envoi du mail et supprime le fichier .Ical
-		envoi_mail($tab_id_user_notif, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true,"envoi_fichiers"=>true));
-		unlink($fichier_tmp);
-	}
+
+	include_once('../hack_Topaza/notification/notif_topaza_agenda.php');
+	notif_evenements();
 
 	////	FERMETURE DU POPUP
 	reload_close();

@@ -27,14 +27,9 @@ if(isset($_POST["id_fichier"]))
 	affecter_droits_acces($objet["fichier"],$_POST["id_fichier"]);
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
-	if(isset($_POST["notification"]))
-	{
-		$liste_id_destinataires = users_affectes($objet["fichier"], $_POST["id_fichier"]);
-		$objet_mail = $trad["FICHIER_mail_fichier_modifie"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = $_POST["nom"].$_POST["extension"];
-		if($_POST["description"]!="")	{ $contenu_mail .= "<br /><br />".$_POST["description"]; }
-		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
-	}
+
+	include_once('../hack_Topaza/notification/notif_topaza_fichiers.php');
+	notif_fichier();
 
 	////	AJOUT DANS LES LOGS  +  FERMETURE DU POPUP
 	add_logs("modif", $objet["fichier"], $_POST["id_fichier"]);

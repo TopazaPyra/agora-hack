@@ -45,13 +45,9 @@ if(isset($_POST["id_contact"]))
 	}
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
-	if(isset($_POST["notification"]))
-	{
-		$liste_id_destinataires = users_affectes($objet["contact"], $_POST["id_contact"]);
-		$objet_mail = $trad["CONTACT_mail_nouveau_contact_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = $_POST["civilite"]." ".$_POST["nom"]." ".$_POST["prenom"];
-		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
-	}
+
+	include_once('../hack_Topaza/notification/notif_topaza_contacts.php');
+	notif_contacts();
 
 	////	FERMETURE DU POPUP
 	reload_close();

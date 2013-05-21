@@ -27,14 +27,8 @@ if(isset($_POST["id_sujet"]))
 	ajouter_fichiers_joint($objet["sujet"],$_POST["id_sujet"]);
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
-	if(isset($_POST["notification"]))
-	{
-		$liste_id_destinataires = users_affectes($objet["sujet"], $_POST["id_sujet"]);
-		$objet_mail = $trad["FORUM_mail_nouveau_sujet_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = $_POST["titre"];
-		if($_POST["description"]!="")	{ $contenu_mail .= "<br /><br />".$_POST["description"]; }
-		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
-	}
+	include_once('../hack_Topaza/notification/notif_topaza_forum_sujets.php');
+	notif_sujets();
 
 	////	FERMETURE DU POPUP
 	reload_close();

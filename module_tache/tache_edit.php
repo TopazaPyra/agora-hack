@@ -48,15 +48,9 @@ if(isset($_POST["id_tache"]))
 	ajouter_fichiers_joint($objet["tache"],$_POST["id_tache"]);
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
-	if(isset($_POST["notification"]))
-	{
-		$liste_id_destinataires = users_affectes($objet["tache"], $_POST["id_tache"]);
-		$objet_mail = $trad["TACHE_mail_nouvelle_tache_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = $_POST["titre"];
-		if($_POST["description"]!="")	$contenu_mail .= "<br /><br />".$_POST["description"];
-		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
-	}
-
+	include_once('../hack_Topaza/notification/notif_topaza_taches.php');
+	notif_taches();
+	
 	////	FERMETURE DU POPUP
 	reload_close();
 }

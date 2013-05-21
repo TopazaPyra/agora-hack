@@ -236,6 +236,7 @@ $trad["aucun_acces"] = "accès non autorisé";
 $trad["libelles_objets"] = array("element"=>"elements", "fichier"=>"fichiers", "tache"=>"taches", "lien"=>"liens", "contact"=>"contacts", "evenement"=>"evenements", "message"=>"messages", "conteneur"=>"conteneur", "dossier"=>"dossier", "agenda"=>"agenda", "sujet"=>"sujet");
 // Envoi d'un mail (nouvel utilisateur, notification de création d'objet, etc...)
 $trad["mail_envoye_par"] = "Envoyé par";  // "Envoyé par" M. Trucmuche
+$trad["depuis_espace"] = "depuis l'espace";
 $trad["mail_envoye"] = "L'e-mail a bien été envoyé !";
 $trad["mail_envoye_notif"] = "L'e-mail de notification a bien été envoyé !";
 $trad["mail_pas_envoye"] = "L'e-mail n'a pas pu être envoyé..."; // idem
