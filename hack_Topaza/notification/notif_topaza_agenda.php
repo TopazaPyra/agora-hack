@@ -1,7 +1,7 @@
 <?php
 //// MODULE AGENDA
-function notif_evenements(){
-	if(isset($_POST["notification"]) && $evt_tmp["droit_acces"]==3)
+function notif_evenements($temps_event,$date_event){
+	if(isset($_POST["notification"]) /* && $evt_tmp["droit_acces"]==3 */)
 	{
 		// Fichier .Ical (temporaire)
 		$evt_ical = objet_infos($objet["evenement"],$_POST["id_evenement"]);
@@ -14,12 +14,12 @@ function notif_evenements(){
 		// Destinataires + titre + description
 		$tab_id_user_notif = (isset($_POST["notif_destinataires"]) && count($_POST["notif_destinataires"])>0)  ?  $_POST["notif_destinataires"]  :  $tab_id_user_notif;
 		$objet_mail = $trad["AGENDA_mail_nouvel_evenement_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
-		$contenu_mail = "Nom de l'evenement : ".$_POST["titre"]."<br />"."Date et plage horaire : ".temps($date_debut,"normal",$date_fin);
+		$contenu_mail = "Nom de l'evenement : ".$_POST["titre"]."<br />"."Date et plage horaire : ".$date_event;
  		$lien = $_SESSION["agora"]["adresse_web"];
 		if(strpos($lien, "index.php")){
 			$lien = rtrim($lien, "index.php");
 		}
-		$lien .= MODULE_DOSSIER."/index.php?date_affiche=".strtotime(strftime("%Y-%m-%d",$config["agenda_debut"]));
+		$lien .= MODULE_DOSSIER."/index.php?date_affiche=".$temps_event;
 		
 		$contenu_mail .= "<br /> Lien : ".$lien."<br />"; 		
 		if($_POST["description"]!="")	$contenu_mail .= "<br /><br />".$_POST["description"];
