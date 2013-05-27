@@ -1,6 +1,6 @@
 <?php
 //// MODULE FORUM
-function notif_messages(){
+
 	$objet_mail = $trad["FORUM_mail_nouveau_message_cree"]." ".auteur($_SESSION["user"]["id_utilisateur"],@$_POST["invite"]);
 	$theme = db_ligne("SELECT gt_forum_theme.titre FROM gt_forum_theme RIGHT JOIN gt_forum_sujet ON gt_forum_theme.id_theme=gt_forum_sujet.id_theme WHERE id_sujet='".$_POST["id_sujet"]."' AND gt_forum_theme.id_theme!='NULL'");
 	$contenu_mail = "";
@@ -33,5 +33,5 @@ function notif_messages(){
 		}
 		if(count($liste_id_destinataires2)>0)	envoi_mail($liste_id_destinataires2, $objet_mail, magicquotes_strip($contenu_mail), array("message_alert"=>false));
 	}
-}
+
 ?>

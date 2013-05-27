@@ -1,6 +1,6 @@
 <?php
 //// MODULE LIEN
-function notif_liens(){
+
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["lien"], $_POST["id_lien"]);
@@ -17,5 +17,5 @@ function notif_liens(){
 		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
 	}
 
-}
+
 ?>

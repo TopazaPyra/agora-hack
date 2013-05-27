@@ -121,7 +121,6 @@ else
 	////	ENVOI DE NOTIFICATION PAR MAIL
 	////
 	include_once('../hack_Topaza/notification/notif_topaza_fichiers_traitement.php');
-	notif_fichier_traitement();
 }
 
 
