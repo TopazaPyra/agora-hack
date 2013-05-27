@@ -29,7 +29,6 @@ if(isset($_POST["id_lien"]))
 	////	ENVOI DE NOTIFICATION PAR MAIL
 
 	include_once('../hack_Topaza/notification/notif_topaza_liens.php');
-	notif_liens();
 
 	////	FERMETURE DU POPUP
 	reload_close();

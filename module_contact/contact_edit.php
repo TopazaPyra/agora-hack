@@ -47,7 +47,6 @@ if(isset($_POST["id_contact"]))
 	////	ENVOI DE NOTIFICATION PAR MAIL
 
 	include_once('../hack_Topaza/notification/notif_topaza_contacts.php');
-	notif_contacts();
 
 	////	FERMETURE DU POPUP
 	reload_close();

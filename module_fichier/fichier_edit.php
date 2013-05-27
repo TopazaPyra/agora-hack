@@ -29,7 +29,6 @@ if(isset($_POST["id_fichier"]))
 	////	ENVOI DE NOTIFICATION PAR MAIL
 
 	include_once('../hack_Topaza/notification/notif_topaza_fichiers.php');
-	notif_fichier();
 
 	////	AJOUT DANS LES LOGS  +  FERMETURE DU POPUP
 	add_logs("modif", $objet["fichier"], $_POST["id_fichier"]);

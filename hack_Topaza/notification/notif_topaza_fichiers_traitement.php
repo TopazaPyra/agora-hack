@@ -1,5 +1,5 @@
 <?php
-function notif_fichier_traitement(){
+
 	if(isset($_POST["notification"]) && control_upload()==true)
 	{
 		// On prends les droits d'acces du dernier fichier OU du fichier auquel on ajoute une version
@@ -17,5 +17,5 @@ function notif_fichier_traitement(){
 		$contenu_mail .= "<br /> Lien du dossier : ".$lien;
 		envoi_mail($liste_id_destinataires, $objet_mail, $contenu_mail, array("notif"=>true));
 	}
-}
+
 ?>

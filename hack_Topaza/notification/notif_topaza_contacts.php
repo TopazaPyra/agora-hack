@@ -1,6 +1,6 @@
 <?php
 //// MODULE CONTACT
-function notif_contacts(){
+
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["contact"], $_POST["id_contact"]);
@@ -15,5 +15,5 @@ function notif_contacts(){
 		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
 	}
 
-}
+
 ?>

@@ -84,10 +84,7 @@ if(isset($_POST["id_evenement"]))
 	ajouter_fichiers_joint($objet["evenement"],$_POST["id_evenement"]);
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
-	$temps_event = temps($date_debut,"normal",$date_fin);
-	$date_event = strtotime(strftime("%Y-%m-%d",$config["agenda_debut"]));
 	include_once('../hack_Topaza/notification/notif_topaza_agenda.php');
-	notif_evenements($temps_event,$date_event);
 
 	////	FERMETURE DU POPUP
 	reload_close();

@@ -1,6 +1,6 @@
 <?php
 //// MODULE FICHIER
-function notif_fichiers(){
+
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["fichier"], $_POST["id_fichier"]);
@@ -17,5 +17,5 @@ function notif_fichiers(){
 		$contenu_mail .= "<br /> Lien du dossier : ".$lien;
 		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
 	}
-}
+
 ?>
