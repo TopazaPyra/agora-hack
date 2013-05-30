@@ -41,7 +41,7 @@ function envoi_mail($destinataires, $sujet_mail, $contenu_mail, $options="")
 	$message  = "--".$frontiere."\n";
 	$message .= "Content-Type: text/html; charset=UTF-8\n\n";
 	$message .= "<html>\n<head>\n<title>\n</title>\n</head>\n<body>\n";
-/**/if($options["header_footer"]==true && isset($_SESSION["user"]["nom"]))		$message .= $trad["mail_envoye_par"]." ".auteur($_SESSION["user"])." (".$_SESSION["espace"]["nom"].") :<br /><br />";
+/**/if($options["header_footer"]==true && isset($_SESSION["user"]["nom"]))		$message .= $trad["mail_envoye_par"]." ".auteur($_SESSION["user"])." ".$trad["depuis_espace"]." \"".$_SESSION["espace"]["nom"]."\" :<br /><br />";
 	$message .= wordwrap($contenu_mail);
 /**/if($options["header_footer"]==true)											$message .= "<br /><br /><a href=\"".$_SESSION["agora"]["adresse_web"]."\" target='_blank'>".$_SESSION["agora"]["nom"]."</a><br />";
 	$message .= "</body>\n</html>\n\n\n\n";
