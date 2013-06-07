@@ -1,6 +1,6 @@
 <?php
 //// MODULE FORUM
-
+function notif_sujets(){
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["sujet"], $_POST["id_sujet"]);
@@ -22,5 +22,5 @@
 		if($_POST["description"]!="")	{ $contenu_mail .= "<br /><br />".$_POST["description"]; }
 		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
 	}
-
+}
 ?>

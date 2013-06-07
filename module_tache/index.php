@@ -34,7 +34,11 @@ $droit_acces_dossier = droit_acces_controler($objet["tache_dossier"],$_GET["id_d
 			<div class="menu_gauche_block content">
 				<?php
 				////	AJOUTER TACHE
-				if($droit_acces_dossier>=1.5)	echo "<div class='menu_gauche_ligne lien' onclick=\"edit_iframe_popup('tache_edit.php?id_dossier=".$_GET["id_dossier"]."');\"><div class='menu_gauche_img'><img src=\"".PATH_TPL."divers/ajouter.png\" /></div><div class='menu_gauche_txt'>".$trad["TACHE_ajouter_tache"]."</div></div><hr />";
+				if($droit_acces_dossier>=1.5)	echo "<div class='menu_gauche_ligne lien' onclick=\"edit_iframe_popup('tache_edit.php?id_dossier=".$_GET["id_dossier"]."');\"><div class='menu_gauche_img'><img src=\"".PATH_TPL."divers/ajouter.png\" /></div><div class='menu_gauche_txt'>".$trad["TACHE_ajouter_tache"]."</div></div>";
+ 				////	EXPORTER LES TACHES
+				if($droit_acces_dossier>=1.5 && $_SESSION["user"]["id_utilisateur"]>0) 
+						echo "<div class='menu_gauche_ligne lien' onclick=\"popup('../hack_Topaza/export/export_taches.php?id_dossier=".$_GET["id_dossier"]."');\"><div class='menu_gauche_img'><img src=\"".PATH_TPL."divers/export_import.png\" /></div><div class='menu_gauche_txt'>"."Exporter Taches du Dossier"."</div></div>";
+				echo "<hr />";
 				////	MENU ELEMENTS
 				$cfg_menu_elements = array("objet"=>$objet["tache"], "objet_dossier"=>$objet["tache_dossier"], "id_objet_dossier"=>$_GET["id_dossier"], "droit_acces_dossier"=>$droit_acces_dossier);
 				require PATH_INC."elements_menu_selection.inc.php";

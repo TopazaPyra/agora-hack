@@ -1,7 +1,7 @@
 <?php
 //// MODULE FORUM
 
-	$objet_mail = $trad["FORUM_mail_nouveau_message_cree"]." ".auteur($_SESSION["user"]["id_utilisateur"],@$_POST["invite"]);
+	$objet_mail = "[".$_SESSION["espace"]["nom"]."] : ".$_POST["titre"]/* ." par ".auteur($_SESSION["user"]["id_utilisateur"],@$_POST["invite"]) */;
 	$theme = db_ligne("SELECT gt_forum_theme.titre FROM gt_forum_theme RIGHT JOIN gt_forum_sujet ON gt_forum_theme.id_theme=gt_forum_sujet.id_theme WHERE id_sujet='".$_POST["id_sujet"]."' AND gt_forum_theme.id_theme!='NULL'");
 	$contenu_mail = "";
 	if ($theme > 0) {
