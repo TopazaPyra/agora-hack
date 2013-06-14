@@ -4,7 +4,9 @@
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["tache"], $_POST["id_tache"]);
-		$objet_mail = $trad["TACHE_mail_nouvelle_tache_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
+		$nomdossier = db_ligne("SELECT nom FROM gt_tache_dossier WHERE id_dossier=".$_POST["id_dossier"].";");
+		if($nomdossier['nom']=="") { $nomdossier['nom']="Racine";}
+		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Tache - Dossier ".$nomdossier['nom'];
 		$respons = db_tableau("SELECT gt_utilisateur.nom,gt_utilisateur.prenom FROM gt_utilisateur RIGHT JOIN gt_tache_responsable ON gt_tache_responsable.id_utilisateur=gt_utilisateur.id_utilisateur WHERE id_tache=".$_POST["id_tache"].";");
 		$contenu_mail = "";
 

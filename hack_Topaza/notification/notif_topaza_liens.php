@@ -4,7 +4,9 @@
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["lien"], $_POST["id_lien"]);
-		$objet_mail = $trad["LIEN_mail_nouveau_lien_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
+		$nomdossier = db_ligne("SELECT nom FROM gt_lien_dossier WHERE id_dossier=".$_POST["id_dossier"].";");
+		if($nomdossier['nom']=="") { $nomdossier['nom']="Racine";}
+		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Lien - Dossier ".$nomdossier['nom'];
 		$contenu_mail = "<a href=\"".$_POST["adresse"]."\" target=\"_blank\">".$_POST["adresse"]."</a>";
 		$lien = $_SESSION["agora"]["adresse_web"];
 		if(strpos($lien, "index.php")){
