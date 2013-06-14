@@ -12,12 +12,13 @@ $formats_csv = array(
 			"description" => "description",
 			"priorite" => "priorite",
 			"avancement" => "avancement",
-			"charge jour homme" => "charge jour homme",
-			"budget disponible" => "budget disponible",
-			"budget engage" => "budget engage",
+			"charge_jour_homme" => "charge jour homme",
+			"budget_disponible" => "budget disponible",
+			"budget_engage" => "budget engage",
 			"devise" => "devise",
 			"pays" => "pays",
-			"date debut" => "date fin"/* ,
+			"date_debut" => "date debut",
+			"date_fin" => "date fin"/* ,
 			"responsables" => "responsables" */
 		)
 	)
