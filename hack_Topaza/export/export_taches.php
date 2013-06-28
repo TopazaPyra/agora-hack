@@ -58,7 +58,6 @@ body { background-image:url('<?php echo PATH_TPL; ?>module_tache/fond_popup.png'
 		<?php
 		foreach($formats_csv as $format_csv=>$infos_csv)	{ echo "<option value='".$format_csv."'>".strtoupper($format_csv)."</option>"; }
 		?>
-		<option value='ldif'>LDIF</option>
 	</select> &nbsp; 
 	<input type="submit" value="<?php echo $trad["valider"]; ?>" class="button" />
 	<input type="hidden" name="id_dossier" value="<?php echo @$_REQUEST["id_dossier"]; ?>" />

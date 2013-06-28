@@ -6,15 +6,15 @@
 		$liste_id_destinataires = users_affectes($objet["tache"], $_POST["id_tache"]);
 		$nomdossier = db_ligne("SELECT nom FROM gt_tache_dossier WHERE id_dossier=".$_POST["id_dossier"].";");
 		if($nomdossier['nom']=="") { $nomdossier['nom']="Racine";}
-		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Tache - Dossier ".$nomdossier['nom'];
+		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Tache - ".$_POST["titre"];
 		$respons = db_tableau("SELECT gt_utilisateur.nom,gt_utilisateur.prenom FROM gt_utilisateur RIGHT JOIN gt_tache_responsable ON gt_tache_responsable.id_utilisateur=gt_utilisateur.id_utilisateur WHERE id_tache=".$_POST["id_tache"].";");
-		$contenu_mail = "";
+		$contenu_mail = "<br />Dans le dossier ".$nomdossier['nom'];
 
  		foreach($respons as $respons_tmp) {			
 			$list_resp .= $respons_tmp["nom"]." ".$respons_tmp["prenom"].", ";
 		}
 		$list_resp = substr($list_resp, 0, -2);
-		$contenu_mail .= "Nom de la tache : ".$_POST["titre"]."<br /> Responsable(s) : ".$list_resp; 
+		$contenu_mail .= "<br />Nom de la tache : ".$_POST["titre"]."<br /> Responsable(s) : ".$list_resp; 
 		
  		$lien = $_SESSION["agora"]["adresse_web"];
 		if(strpos($lien, "index.php")){

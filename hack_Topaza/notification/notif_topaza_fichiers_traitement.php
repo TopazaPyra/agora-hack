@@ -1,5 +1,5 @@
 <?php
-
+//MODULE FICHIER
 	if(isset($_POST["notification"]) && control_upload()==true)
 	{
 		// On prends les droits d'acces du dernier fichier OU du fichier auquel on ajoute une version

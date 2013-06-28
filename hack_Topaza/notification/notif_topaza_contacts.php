@@ -6,8 +6,9 @@
 		$liste_id_destinataires = users_affectes($objet["contact"], $_POST["id_contact"]);
 		$nomdossier = db_ligne("SELECT nom FROM gt_contact_dossier WHERE id_dossier=".$_POST["id_dossier"].";");
 		if($nomdossier['nom']=="") { $nomdossier['nom']="Racine";}
-		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Contact - Dossier ".$nomdossier['nom'];
-		$contenu_mail = "Contact ajoute : ".$_POST["civilite"]." ".$_POST["nom"]." ".$_POST["prenom"];
+		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Contact - ".$_POST["nom"]." ".$_POST["prenom"];
+		$contenu_mail = "Dans le dossier ".$nomdossier['nom'];
+		$contenu_mail .= "Contact ajoute : ".$_POST["civilite"]." ".$_POST["nom"]." ".$_POST["prenom"];
 		$lien = $_SESSION["agora"]["adresse_web"];
 		if(strpos($lien, "index.php")){
 			$lien = rtrim($lien, "index.php");
