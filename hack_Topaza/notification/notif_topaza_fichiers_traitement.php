@@ -1,11 +1,17 @@
 <?php
+<<<<<<< HEAD
 
+=======
+//MODULE FICHIER
+>>>>>>> origin/dev
 	if(isset($_POST["notification"]) && control_upload()==true)
 	{
 		// On prends les droits d'acces du dernier fichier OU du fichier auquel on ajoute une version
 		$id_fichier_tmp = (@$_POST["id_fichier_version"]>0)   ?  $fichier_old["id_fichier"]  :  $fichier["id_fichier"];
 		$liste_id_destinataires = users_affectes($objet["fichier"], $id_fichier_tmp);
-		$objet_mail = $trad["FICHIER_mail_nouveau_fichier_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
+		$nomdossier = db_ligne("SELECT nom FROM gt_fichier_dossier WHERE id_dossier=".$_POST["id_dossier"].";");
+		if($nomdossier['nom']=="") { $nomdossier['nom']="Racine";}
+		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Fichier - Dossier ".$nomdossier['nom'];
 		$contenu_mail = $trad["FICHIER_mail_nouveau_fichier_cree"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"]." :<br /><br />";
 		$contenu_mail .= "Nom(s) du/des fichier(s) ajoute(s) : <br />";
 		foreach($_FILES as $fichier)	{ if($fichier["name"]!="")	$contenu_mail .= $fichier["name"]."<br />"; }

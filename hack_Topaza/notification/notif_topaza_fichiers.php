@@ -4,7 +4,9 @@
 	if(isset($_POST["notification"]))
 	{
 		$liste_id_destinataires = users_affectes($objet["fichier"], $_POST["id_fichier"]);
-		$objet_mail = $trad["FICHIER_mail_fichier_modifie"]." ".$_SESSION["user"]["nom"]." ".$_SESSION["user"]["prenom"];
+		$nomdossier = db_ligne("SELECT nom FROM gt_fichier_dossier WHERE id_dossier=".$_POST["id_dossier"].";");
+		if($nomdossier['nom']=="") { $nomdossier['nom']="Racine";}
+		$objet_mail = "[".$_SESSION["espace"]["nom"]."] : Fichier - Dossier ".$nomdossier['nom'];
 		$contenu_mail = "Nom du fichier : ".$_POST["nom"].$_POST["extension"];
 		
 		$lien = $_SESSION["agora"]["adresse_web"];

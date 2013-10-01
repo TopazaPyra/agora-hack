@@ -84,8 +84,15 @@ if(isset($_POST["id_evenement"]))
 	ajouter_fichiers_joint($objet["evenement"],$_POST["id_evenement"]);
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
+<<<<<<< HEAD
 	include_once('../hack_Topaza/notification/notif_topaza_agenda.php');
 
+=======
+
+	include_once('../hack_Topaza/notification/notif_topaza_agenda.php');
+
+
+>>>>>>> origin/dev
 	////	FERMETURE DU POPUP
 	reload_close();
 }
@@ -485,4 +492,8 @@ function controle_formulaire()
 </form>
 
 
+<<<<<<< HEAD
 <?php require PATH_INC."footer.inc.php"; ?>
+=======
+<?php require PATH_INC."footer.inc.php"; ?>
+>>>>>>> origin/dev

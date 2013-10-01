@@ -27,4 +27,20 @@ Pour l'installer il faut supprimer dans chaque module concerné, le code contenu
 
 	-Module Taches : dans le fichier tache_edit.php insérer :
 		include_once('../hack_Topaza/notification/notif_topaza_taches.php');
+<<<<<<< HEAD
 
+=======
+
+	Le dossier export contient les fichiers permettant l'export des taches sous format de fichier csv pour pouvoir
+	récupérer les données importantes et offrir la possibilité de mieux les organiser avec des logiciels pouvant faire des diagrammes
+	de Gantt complets.
+	Pour l'installer il faudra ajouter les fichiers export_taches.php et export_tache.inc.php au dossier divers d'agora 
+	et le code donné ci-dessous juste avant le commentaire ////	MENU ELEMENTS dans le fichier index.php du Module Tache  :
+	
+ 				////	EXPORTER LES TACHES
+				if($droit_acces_dossier>=1.5 && $_SESSION["user"]["id_utilisateur"]>0) 
+						echo "<div class='menu_gauche_ligne lien' onclick=\"popup('".PATH_DIVERS."export_taches.php?id_dossier=".$_GET["id_dossier"]."');\"><div class='menu_gauche_img'><img src=\"".PATH_TPL."divers/export_import.png\" /></div><div class='menu_gauche_txt'>"."Exporter Taches du Dossier"."</div></div>";
+				echo "<hr />";
+				
+
+>>>>>>> origin/dev

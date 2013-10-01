@@ -28,7 +28,10 @@ if(isset($_POST["id_sujet"]))
 
 	////	ENVOI DE NOTIFICATION PAR MAIL
 	include_once('../hack_Topaza/notification/notif_topaza_forum_sujets.php');
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
 	////	FERMETURE DU POPUP
 	reload_close();
 }
