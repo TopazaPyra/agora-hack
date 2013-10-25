@@ -19,7 +19,7 @@
 		if(strpos($lien, "index.php")){
 			$lien = rtrim($lien, "index.php");
 		}
-		$lien .= "/module_".MODULE_NOM."/index.php?date_affiche=".strtotime(strftime("%Y-%m-%d",$config["agenda_debut"]));
+		$lien .= "/".MODULE_PATH."/index.php?date_affiche=".strtotime(strftime("%Y-%m-%d",$config["agenda_debut"]));
 		
 		$contenu_mail .= "<br /> Lien : ".$lien."<br />"; 		
 		if($_POST["description"]!="")	$contenu_mail .= "<br /><br />".$_POST["description"];
