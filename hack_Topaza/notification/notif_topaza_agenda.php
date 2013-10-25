@@ -1,11 +1,7 @@
 <?php
 //// MODULE AGENDA
 
-<<<<<<< HEAD
-	if(isset($_POST["notification"])  && $evt_tmp["droit_acces"]==3 )
-=======
 	if(isset($_POST["notification"]) && $evt_tmp["droit_acces"]==3 )
->>>>>>> origin/dev
 	{
 		// Fichier .Ical (temporaire)
 		$evt_ical = objet_infos($objet["evenement"],$_POST["id_evenement"]);
@@ -32,8 +28,4 @@
 		unlink($fichier_tmp);
 	}
 
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> origin/dev
