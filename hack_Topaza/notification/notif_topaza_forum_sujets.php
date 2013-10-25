@@ -17,7 +17,7 @@
 		if(strpos($lien, "index.php")){
 			$lien = rtrim($lien, "index.php");
 		}
-		$lien .= "/module_".MODULE_NOM."/sujet.php?id_sujet=".$_POST["id_sujet"];
+		$lien .= "/".MODULE_PATH."/sujet.php?id_sujet=".$_POST["id_sujet"];
 		$contenu_mail .= "<br />".$lien;
 		if($_POST["description"]!="")	{ $contenu_mail .= "<br /><br />".$_POST["description"]; }
 		envoi_mail($liste_id_destinataires, $objet_mail, magicquotes_strip($contenu_mail), array("notif"=>true));
