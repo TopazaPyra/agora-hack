@@ -14,7 +14,7 @@
 	if(strpos($lien, "index.php")){
 		$lien = rtrim($lien, "index.php");
 	}
-	$lien .= "/module_".MODULE_NOM."/sujet.php?id_sujet=".$_POST["id_sujet"];
+	$lien .= "/".MODULE_PATH."/sujet.php?id_sujet=".$_POST["id_sujet"];
 	$contenu_mail .= "<br />".$lien;
 	
 	if($_POST["description"]!="")	$contenu_mail .= "<br /><br />".$_POST["description"];
