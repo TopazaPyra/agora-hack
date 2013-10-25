@@ -20,7 +20,7 @@
 		if(strpos($lien, "index.php")){
 			$lien = rtrim($lien, "index.php");
 		}
-		$lien .= MODULE_DOSSIER;
+		$lien .= "/".MODULE_PATH;
 		
 		$contenu_mail .= "<br />".$lien."<br />"; 
 		
