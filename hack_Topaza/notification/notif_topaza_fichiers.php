@@ -13,7 +13,7 @@
 		if(strpos($lien, "index.php")){
 			$lien = rtrim($lien, "index.php");
 		}
-		$lien .= "/module_".MODULE_NOM."/index.php?id_dossier=".$_POST["id_dossier"];
+		$lien .= "/".MODULE_PATH."/index.php?id_dossier=".$_POST["id_dossier"];
 		
 		if($_POST["description"]!="")	{ $contenu_mail .= "<br /><br /> Description du fichier : ".$_POST["description"]."<br />";		}
 		$contenu_mail .= "<br /> Lien du dossier : ".$lien;
