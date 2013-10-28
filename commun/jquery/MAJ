@@ -1,9 +1,0 @@
-Mise à jour  jQuery  +  jQuery-UI  (http://jqueryui.com/download/)
-
-- telecharger la dernière version ".min" de jQuery
-	-> remplacer les  "jquery-1.x.x.min.js"
-	-> mettre à jour l'appel de jQuery dans les headers HTML (rechercher en fonction du nom de l'ancien fichier .js)
-
-- telecharger la dernière version ".min" + "custom" de jQuery-UI  => catégories "UI Core" et "Interactions", et sans thème
-	->  remplacer les "jquery-ui-1.x.x.custom.min.js"
-	-> mettre à jour l'appel de jQuery dans les headers HTML (rechercher en fonction du nom de l'ancien fichier .js)
