@@ -27,7 +27,7 @@ if(isset($_POST["export_format"]))
 			foreach($tab_csv["champs"] as $champ_agora => $champ_csv)
 			{
 				if($tab_csv["delimiteur"]=="'")		$tache[$champ_agora] = addslashes($tache[$champ_agora]);
-				if(isset($tache[$champ_agora]) && $tache[$champ_agora]!="")		$contenu_export .= $tab_csv["delimiteur"].$tache[$champ_agora].$tab_csv["delimiteur"].$tab_csv["separateur"];
+				if(isset($tache[$champ_agora]) && $tache[$champ_agora]!="")		$contenu_export .= $tab_csv["delimiteur"].strip_tags($tache[$champ_agora]).$tab_csv["delimiteur"].$tab_csv["separateur"];
 				else																$contenu_export .= $tab_csv["separateur"];
 			}
 			$contenu_export .= "\n";
